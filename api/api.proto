@@ -1,6 +1,7 @@
 syntax = "proto3";
 package api;
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 
 message Email {
   string to = 1;
@@ -16,5 +17,10 @@ message CreateEmailResponse {
 }
 
 service EmailHandler {
-  rpc CreateEmail(Email) returns (CreateEmailResponse);
+  rpc CreateEmail(Email) returns (CreateEmailResponse) {
+    option (google.api.http) = {
+      post: "/1/email"
+      body: "*"
+    };
+  };
 }
