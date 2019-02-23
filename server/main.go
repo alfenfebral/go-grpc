@@ -85,7 +85,7 @@ func startGRPCServer(address, certFile, keyFile string) error {
 	grpcServer := grpc.NewServer(opts...)
 
 	// attach the Ping service to the server
-	api.RegisterEmailHandlerServer(grpcServer, &s)
+	api.RegisterEmailServer(grpcServer, &s)
 
 	// start the server
 	log.Printf("starting HTTP/2 gRPC server on %s", address)
@@ -111,7 +111,7 @@ func startRESTServer(address, grpcAddress, certFile string) error {
 	opts := []grpc.DialOption{grpc.WithTransportCredentials(creds)}
 
 	// Register ping
-	err = api.RegisterEmailHandlerHandlerFromEndpoint(ctx, mux, grpcAddress, opts)
+	err = api.RegisterEmailHandlerFromEndpoint(ctx, mux, grpcAddress, opts)
 	if err != nil {
 		return fmt.Errorf("could not register service Ping: %s", err)
 	}

@@ -45,8 +45,8 @@ func main() {
 		log.Fatalf("did not connect: %s", err)
 	}
 	defer conn.Close()
-	c := api.NewEmailHandlerClient(conn)
-	response, err := c.CreateEmail(context.Background(), &api.Email{To: "foo@foo.foo", Subject: "foo", Message: "foo"})
+	c := api.NewEmailClient(conn)
+	response, err := c.CreateEmail(context.Background(), &api.CreateEmailRequest{To: "foo@foo.foo", Subject: "foo", Message: "foo"})
 	if err != nil {
 		log.Fatalf("Error when calling CreateEmail: %s", err)
 	}

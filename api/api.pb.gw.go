@@ -28,8 +28,8 @@ var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
-func request_EmailHandler_CreateEmail_0(ctx context.Context, marshaler runtime.Marshaler, client EmailHandlerClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq Email
+func request_Email_CreateEmail_0(ctx context.Context, marshaler runtime.Marshaler, client EmailClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CreateEmailRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -45,9 +45,9 @@ func request_EmailHandler_CreateEmail_0(ctx context.Context, marshaler runtime.M
 
 }
 
-// RegisterEmailHandlerHandlerFromEndpoint is same as RegisterEmailHandlerHandler but
+// RegisterEmailHandlerFromEndpoint is same as RegisterEmailHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterEmailHandlerHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterEmailHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -67,23 +67,23 @@ func RegisterEmailHandlerHandlerFromEndpoint(ctx context.Context, mux *runtime.S
 		}()
 	}()
 
-	return RegisterEmailHandlerHandler(ctx, mux, conn)
+	return RegisterEmailHandler(ctx, mux, conn)
 }
 
-// RegisterEmailHandlerHandler registers the http handlers for service EmailHandler to "mux".
+// RegisterEmailHandler registers the http handlers for service Email to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterEmailHandlerHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterEmailHandlerHandlerClient(ctx, mux, NewEmailHandlerClient(conn))
+func RegisterEmailHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	return RegisterEmailHandlerClient(ctx, mux, NewEmailClient(conn))
 }
 
-// RegisterEmailHandlerHandlerClient registers the http handlers for service EmailHandler
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "EmailHandlerClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "EmailHandlerClient"
+// RegisterEmailHandlerClient registers the http handlers for service Email
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "EmailClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "EmailClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "EmailHandlerClient" to call the correct interceptors.
-func RegisterEmailHandlerHandlerClient(ctx context.Context, mux *runtime.ServeMux, client EmailHandlerClient) error {
+// "EmailClient" to call the correct interceptors.
+func RegisterEmailHandlerClient(ctx context.Context, mux *runtime.ServeMux, client EmailClient) error {
 
-	mux.Handle("POST", pattern_EmailHandler_CreateEmail_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_Email_CreateEmail_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -92,14 +92,14 @@ func RegisterEmailHandlerHandlerClient(ctx context.Context, mux *runtime.ServeMu
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_EmailHandler_CreateEmail_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Email_CreateEmail_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_EmailHandler_CreateEmail_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_Email_CreateEmail_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -107,9 +107,9 @@ func RegisterEmailHandlerHandlerClient(ctx context.Context, mux *runtime.ServeMu
 }
 
 var (
-	pattern_EmailHandler_CreateEmail_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"1", "email"}, ""))
+	pattern_Email_CreateEmail_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"1", "email"}, ""))
 )
 
 var (
-	forward_EmailHandler_CreateEmail_0 = runtime.ForwardResponseMessage
+	forward_Email_CreateEmail_0 = runtime.ForwardResponseMessage
 )

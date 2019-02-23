@@ -24,7 +24,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Email struct {
+type CreateEmailRequest struct {
 	To                   string               `protobuf:"bytes,1,opt,name=to,proto3" json:"to,omitempty"`
 	Subject              string               `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
 	Message              string               `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
@@ -35,60 +35,60 @@ type Email struct {
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *Email) Reset()         { *m = Email{} }
-func (m *Email) String() string { return proto.CompactTextString(m) }
-func (*Email) ProtoMessage()    {}
-func (*Email) Descriptor() ([]byte, []int) {
+func (m *CreateEmailRequest) Reset()         { *m = CreateEmailRequest{} }
+func (m *CreateEmailRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateEmailRequest) ProtoMessage()    {}
+func (*CreateEmailRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_00212fb1f9d3bf1c, []int{0}
 }
 
-func (m *Email) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Email.Unmarshal(m, b)
+func (m *CreateEmailRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateEmailRequest.Unmarshal(m, b)
 }
-func (m *Email) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Email.Marshal(b, m, deterministic)
+func (m *CreateEmailRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateEmailRequest.Marshal(b, m, deterministic)
 }
-func (m *Email) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Email.Merge(m, src)
+func (m *CreateEmailRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateEmailRequest.Merge(m, src)
 }
-func (m *Email) XXX_Size() int {
-	return xxx_messageInfo_Email.Size(m)
+func (m *CreateEmailRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateEmailRequest.Size(m)
 }
-func (m *Email) XXX_DiscardUnknown() {
-	xxx_messageInfo_Email.DiscardUnknown(m)
+func (m *CreateEmailRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateEmailRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_Email proto.InternalMessageInfo
+var xxx_messageInfo_CreateEmailRequest proto.InternalMessageInfo
 
-func (m *Email) GetTo() string {
+func (m *CreateEmailRequest) GetTo() string {
 	if m != nil {
 		return m.To
 	}
 	return ""
 }
 
-func (m *Email) GetSubject() string {
+func (m *CreateEmailRequest) GetSubject() string {
 	if m != nil {
 		return m.Subject
 	}
 	return ""
 }
 
-func (m *Email) GetMessage() string {
+func (m *CreateEmailRequest) GetMessage() string {
 	if m != nil {
 		return m.Message
 	}
 	return ""
 }
 
-func (m *Email) GetUpdatedAt() *timestamp.Timestamp {
+func (m *CreateEmailRequest) GetUpdatedAt() *timestamp.Timestamp {
 	if m != nil {
 		return m.UpdatedAt
 	}
 	return nil
 }
 
-func (m *Email) GetCreatedAt() *timestamp.Timestamp {
+func (m *CreateEmailRequest) GetCreatedAt() *timestamp.Timestamp {
 	if m != nil {
 		return m.CreatedAt
 	}
@@ -142,33 +142,157 @@ func (m *CreateEmailResponse) GetMessage() string {
 	return ""
 }
 
+type GetEmailRequest struct {
+	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetEmailRequest) Reset()         { *m = GetEmailRequest{} }
+func (m *GetEmailRequest) String() string { return proto.CompactTextString(m) }
+func (*GetEmailRequest) ProtoMessage()    {}
+func (*GetEmailRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_00212fb1f9d3bf1c, []int{2}
+}
+
+func (m *GetEmailRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetEmailRequest.Unmarshal(m, b)
+}
+func (m *GetEmailRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetEmailRequest.Marshal(b, m, deterministic)
+}
+func (m *GetEmailRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetEmailRequest.Merge(m, src)
+}
+func (m *GetEmailRequest) XXX_Size() int {
+	return xxx_messageInfo_GetEmailRequest.Size(m)
+}
+func (m *GetEmailRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetEmailRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetEmailRequest proto.InternalMessageInfo
+
+func (m *GetEmailRequest) GetId() int32 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type GetEmailResponse struct {
+	Id                   int32                `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	To                   string               `protobuf:"bytes,2,opt,name=to,proto3" json:"to,omitempty"`
+	Subject              string               `protobuf:"bytes,3,opt,name=subject,proto3" json:"subject,omitempty"`
+	Message              string               `protobuf:"bytes,4,opt,name=message,proto3" json:"message,omitempty"`
+	UpdatedAt            *timestamp.Timestamp `protobuf:"bytes,5,opt,name=UpdatedAt,proto3" json:"UpdatedAt,omitempty"`
+	CreatedAt            *timestamp.Timestamp `protobuf:"bytes,6,opt,name=CreatedAt,proto3" json:"CreatedAt,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *GetEmailResponse) Reset()         { *m = GetEmailResponse{} }
+func (m *GetEmailResponse) String() string { return proto.CompactTextString(m) }
+func (*GetEmailResponse) ProtoMessage()    {}
+func (*GetEmailResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_00212fb1f9d3bf1c, []int{3}
+}
+
+func (m *GetEmailResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetEmailResponse.Unmarshal(m, b)
+}
+func (m *GetEmailResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetEmailResponse.Marshal(b, m, deterministic)
+}
+func (m *GetEmailResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetEmailResponse.Merge(m, src)
+}
+func (m *GetEmailResponse) XXX_Size() int {
+	return xxx_messageInfo_GetEmailResponse.Size(m)
+}
+func (m *GetEmailResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetEmailResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetEmailResponse proto.InternalMessageInfo
+
+func (m *GetEmailResponse) GetId() int32 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *GetEmailResponse) GetTo() string {
+	if m != nil {
+		return m.To
+	}
+	return ""
+}
+
+func (m *GetEmailResponse) GetSubject() string {
+	if m != nil {
+		return m.Subject
+	}
+	return ""
+}
+
+func (m *GetEmailResponse) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
+func (m *GetEmailResponse) GetUpdatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.UpdatedAt
+	}
+	return nil
+}
+
+func (m *GetEmailResponse) GetCreatedAt() *timestamp.Timestamp {
+	if m != nil {
+		return m.CreatedAt
+	}
+	return nil
+}
+
 func init() {
-	proto.RegisterType((*Email)(nil), "api.Email")
+	proto.RegisterType((*CreateEmailRequest)(nil), "api.CreateEmailRequest")
 	proto.RegisterType((*CreateEmailResponse)(nil), "api.CreateEmailResponse")
+	proto.RegisterType((*GetEmailRequest)(nil), "api.GetEmailRequest")
+	proto.RegisterType((*GetEmailResponse)(nil), "api.GetEmailResponse")
 }
 
 func init() { proto.RegisterFile("api.proto", fileDescriptor_00212fb1f9d3bf1c) }
 
 var fileDescriptor_00212fb1f9d3bf1c = []byte{
-	// 279 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x50, 0xc1, 0x4a, 0xc3, 0x40,
-	0x10, 0x25, 0x69, 0xa3, 0x66, 0xab, 0x1e, 0xb6, 0x97, 0x25, 0x08, 0x96, 0x9c, 0x8a, 0x87, 0x04,
-	0xeb, 0x45, 0xbc, 0x49, 0x11, 0x7a, 0x0e, 0x0a, 0x5e, 0x27, 0xcd, 0x18, 0x56, 0x92, 0xcc, 0x92,
-	0x9d, 0xfe, 0x80, 0xbf, 0xe0, 0x07, 0xf9, 0x11, 0xfe, 0x82, 0x1f, 0x22, 0xd9, 0x24, 0x5a, 0x41,
-	0xe8, 0xed, 0xbd, 0x79, 0xef, 0xed, 0xbc, 0x59, 0x11, 0x82, 0xd1, 0x89, 0x69, 0x89, 0x49, 0x4e,
-	0xc0, 0xe8, 0xe8, 0xb2, 0x24, 0x2a, 0x2b, 0x4c, 0xdd, 0x28, 0xdf, 0xbd, 0xa4, 0xac, 0x6b, 0xb4,
-	0x0c, 0xb5, 0xe9, 0x5d, 0xd1, 0xc5, 0x60, 0x00, 0xa3, 0x53, 0x68, 0x1a, 0x62, 0x60, 0x4d, 0x8d,
-	0xed, 0xd5, 0xf8, 0xc3, 0x13, 0xc1, 0x43, 0x0d, 0xba, 0x92, 0xe7, 0xc2, 0x67, 0x52, 0xde, 0xc2,
-	0x5b, 0x86, 0x99, 0xcf, 0x24, 0x95, 0x38, 0xb6, 0xbb, 0xfc, 0x15, 0xb7, 0xac, 0x7c, 0x37, 0x1c,
-	0x69, 0xa7, 0xd4, 0x68, 0x2d, 0x94, 0xa8, 0x26, 0xbd, 0x32, 0x50, 0x79, 0x2b, 0xc2, 0x27, 0x53,
-	0x00, 0x63, 0x71, 0xcf, 0x6a, 0xba, 0xf0, 0x96, 0xb3, 0x55, 0x94, 0xf4, 0xfb, 0x93, 0xb1, 0x60,
-	0xf2, 0x38, 0x16, 0xcc, 0x7e, 0xcd, 0x5d, 0x72, 0xdd, 0xe2, 0x90, 0x0c, 0x0e, 0x27, 0x7f, 0xcc,
-	0xf1, 0x5a, 0xcc, 0x7b, 0xe2, 0xce, 0xc8, 0xd0, 0x1a, 0x6a, 0x2c, 0x4a, 0x29, 0xa6, 0x5b, 0x2a,
-	0xd0, 0x1d, 0x14, 0x64, 0x0e, 0xef, 0x17, 0xf7, 0xff, 0x14, 0x5f, 0x3d, 0x8b, 0x53, 0x17, 0xdf,
-	0x40, 0x53, 0x54, 0xd8, 0xca, 0x8d, 0x98, 0xed, 0x3d, 0x2a, 0x45, 0xd2, 0xfd, 0xba, 0xc3, 0x91,
-	0x72, 0xf8, 0x9f, 0x95, 0xf1, 0xfc, 0xed, 0xf3, 0xeb, 0xdd, 0x3f, 0x8b, 0x4f, 0xd2, 0xeb, 0x14,
-	0x3b, 0xe5, 0xce, 0xbb, 0xca, 0x8f, 0x5c, 0xfb, 0x9b, 0xef, 0x00, 0x00, 0x00, 0xff, 0xff, 0x6b,
-	0xcb, 0xd3, 0x11, 0xb8, 0x01, 0x00, 0x00,
+	// 348 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0x4d, 0x4e, 0xeb, 0x30,
+	0x14, 0x85, 0x65, 0xb7, 0xe9, 0x6b, 0x5d, 0xbd, 0x1f, 0xb9, 0x0f, 0x11, 0x45, 0x48, 0x94, 0x8c,
+	0x2a, 0x06, 0x89, 0x28, 0x03, 0x10, 0x33, 0x54, 0x21, 0xe6, 0x11, 0x5d, 0x80, 0xdb, 0x5c, 0x2a,
+	0xa3, 0x26, 0x36, 0xf5, 0xed, 0x06, 0xd8, 0x02, 0x03, 0x36, 0xc5, 0x8c, 0x19, 0x63, 0x16, 0x82,
+	0x62, 0x27, 0xb4, 0x4d, 0xf9, 0x11, 0xcc, 0xe2, 0x7b, 0xce, 0x89, 0xcf, 0xfd, 0x64, 0xd6, 0x11,
+	0x5a, 0x46, 0x7a, 0xa1, 0x50, 0xf1, 0x86, 0xd0, 0x32, 0xd8, 0x9f, 0x29, 0x35, 0x9b, 0x43, 0x6c,
+	0x47, 0x93, 0xe5, 0x75, 0x8c, 0x32, 0x03, 0x83, 0x22, 0xd3, 0xce, 0x15, 0xec, 0x95, 0x06, 0xa1,
+	0x65, 0x2c, 0xf2, 0x5c, 0xa1, 0x40, 0xa9, 0x72, 0xe3, 0xd4, 0xf0, 0x91, 0x30, 0x3e, 0x5a, 0x80,
+	0x40, 0xb8, 0xc8, 0x84, 0x9c, 0x27, 0x70, 0xbb, 0x04, 0x83, 0xfc, 0x0f, 0xa3, 0xa8, 0x7c, 0xd2,
+	0x27, 0x83, 0x4e, 0x42, 0x51, 0x71, 0x9f, 0xfd, 0x32, 0xcb, 0xc9, 0x0d, 0x4c, 0xd1, 0xa7, 0x76,
+	0x58, 0x1d, 0x0b, 0x25, 0x03, 0x63, 0xc4, 0x0c, 0xfc, 0x86, 0x53, 0xca, 0x23, 0x3f, 0x65, 0x9d,
+	0xb1, 0x4e, 0x05, 0x42, 0x7a, 0x8e, 0x7e, 0xb3, 0x4f, 0x06, 0xdd, 0x61, 0x10, 0xb9, 0x32, 0x51,
+	0xd5, 0x36, 0xba, 0xaa, 0xda, 0x26, 0x2b, 0x73, 0x91, 0x74, 0x9d, 0x8a, 0xa4, 0xf7, 0x75, 0xf2,
+	0xcd, 0x1c, 0x8e, 0x58, 0x6f, 0x63, 0x1b, 0xa3, 0x55, 0x6e, 0x80, 0x73, 0xd6, 0x9c, 0xaa, 0x14,
+	0xec, 0x42, 0x5e, 0x62, 0xbf, 0xd7, 0x8b, 0xd3, 0x8d, 0xe2, 0xe1, 0x01, 0xfb, 0x7b, 0x09, 0x58,
+	0xe7, 0x21, 0xd3, 0x32, 0x4e, 0x65, 0x1a, 0x3e, 0x13, 0xf6, 0x6f, 0xe5, 0x29, 0x6f, 0xa9, 0x99,
+	0x4a, 0x88, 0xf4, 0x3d, 0x88, 0x8d, 0x0f, 0x21, 0x36, 0x3f, 0x81, 0xe8, 0xfd, 0x18, 0x62, 0xeb,
+	0x1b, 0x10, 0x87, 0x0f, 0x84, 0x79, 0x76, 0x33, 0x3e, 0x66, 0xdd, 0x35, 0x9c, 0x7c, 0x37, 0x2a,
+	0x1e, 0xdf, 0xf6, 0x73, 0x09, 0xfc, 0x6d, 0xc1, 0x31, 0x09, 0x7b, 0x77, 0x4f, 0x2f, 0xf7, 0xf4,
+	0x77, 0xd8, 0x8e, 0x8f, 0x62, 0x28, 0x94, 0x33, 0x72, 0xc8, 0x4f, 0x58, 0xbb, 0x82, 0xc7, 0xff,
+	0xdb, 0x68, 0x8d, 0x77, 0xb0, 0x53, 0x9b, 0xba, 0xbf, 0x4d, 0x5a, 0xb6, 0xf8, 0xf1, 0x6b, 0x00,
+	0x00, 0x00, 0xff, 0xff, 0x81, 0x0c, 0x4d, 0x36, 0x05, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -179,64 +303,97 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// EmailHandlerClient is the client API for EmailHandler service.
+// EmailClient is the client API for Email service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type EmailHandlerClient interface {
-	CreateEmail(ctx context.Context, in *Email, opts ...grpc.CallOption) (*CreateEmailResponse, error)
+type EmailClient interface {
+	CreateEmail(ctx context.Context, in *CreateEmailRequest, opts ...grpc.CallOption) (*CreateEmailResponse, error)
+	GetEmail(ctx context.Context, in *GetEmailRequest, opts ...grpc.CallOption) (*GetEmailResponse, error)
 }
 
-type emailHandlerClient struct {
+type emailClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewEmailHandlerClient(cc *grpc.ClientConn) EmailHandlerClient {
-	return &emailHandlerClient{cc}
+func NewEmailClient(cc *grpc.ClientConn) EmailClient {
+	return &emailClient{cc}
 }
 
-func (c *emailHandlerClient) CreateEmail(ctx context.Context, in *Email, opts ...grpc.CallOption) (*CreateEmailResponse, error) {
+func (c *emailClient) CreateEmail(ctx context.Context, in *CreateEmailRequest, opts ...grpc.CallOption) (*CreateEmailResponse, error) {
 	out := new(CreateEmailResponse)
-	err := c.cc.Invoke(ctx, "/api.EmailHandler/CreateEmail", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.Email/CreateEmail", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// EmailHandlerServer is the server API for EmailHandler service.
-type EmailHandlerServer interface {
-	CreateEmail(context.Context, *Email) (*CreateEmailResponse, error)
+func (c *emailClient) GetEmail(ctx context.Context, in *GetEmailRequest, opts ...grpc.CallOption) (*GetEmailResponse, error) {
+	out := new(GetEmailResponse)
+	err := c.cc.Invoke(ctx, "/api.Email/GetEmail", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
-func RegisterEmailHandlerServer(s *grpc.Server, srv EmailHandlerServer) {
-	s.RegisterService(&_EmailHandler_serviceDesc, srv)
+// EmailServer is the server API for Email service.
+type EmailServer interface {
+	CreateEmail(context.Context, *CreateEmailRequest) (*CreateEmailResponse, error)
+	GetEmail(context.Context, *GetEmailRequest) (*GetEmailResponse, error)
 }
 
-func _EmailHandler_CreateEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Email)
+func RegisterEmailServer(s *grpc.Server, srv EmailServer) {
+	s.RegisterService(&_Email_serviceDesc, srv)
+}
+
+func _Email_CreateEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateEmailRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(EmailHandlerServer).CreateEmail(ctx, in)
+		return srv.(EmailServer).CreateEmail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/api.EmailHandler/CreateEmail",
+		FullMethod: "/api.Email/CreateEmail",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EmailHandlerServer).CreateEmail(ctx, req.(*Email))
+		return srv.(EmailServer).CreateEmail(ctx, req.(*CreateEmailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _EmailHandler_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "api.EmailHandler",
-	HandlerType: (*EmailHandlerServer)(nil),
+func _Email_GetEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EmailServer).GetEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.Email/GetEmail",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EmailServer).GetEmail(ctx, req.(*GetEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _Email_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "api.Email",
+	HandlerType: (*EmailServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateEmail",
-			Handler:    _EmailHandler_CreateEmail_Handler,
+			Handler:    _Email_CreateEmail_Handler,
+		},
+		{
+			MethodName: "GetEmail",
+			Handler:    _Email_GetEmail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

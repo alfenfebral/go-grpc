@@ -32,17 +32,39 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/apiEmail"
+              "$ref": "#/definitions/apiCreateEmailRequest"
             }
           }
         ],
         "tags": [
-          "EmailHandler"
+          "Email"
         ]
       }
     }
   },
   "definitions": {
+    "apiCreateEmailRequest": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "UpdatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "CreatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
     "apiCreateEmailResponse": {
       "type": "object",
       "properties": {
@@ -55,9 +77,13 @@
         }
       }
     },
-    "apiEmail": {
+    "apiGetEmailResponse": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
         "to": {
           "type": "string"
         },
