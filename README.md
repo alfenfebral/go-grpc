@@ -14,6 +14,12 @@ Make sure if you have protoc-gen-grpc-gateway installed in your system if not, u
 go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 ```
 
+Make sure if you have protoc-gen-swagger installed in your system if not, use command below.
+```bash
+go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
+```
+this will generate a ```swagger.json``` file
+
 ## Compile Proto files
 before your run server or client, you should compliled .proto files using this command.
 ```bash
